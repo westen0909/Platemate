@@ -1,18 +1,40 @@
-<h1> This is the index page </h1>
+<h2 class ="text-center">Timeline</h2>
 
-<% @posts.each do |post| %>
-
-<%= image_tag post.image.url(:small) %>
-<h1> <%= link_to post.title, post %> </h1>
-<h5> <%= post.rating %> </h5>
-<h5> <%= post.location %> </h5>
-<h5> <%= post.price %> </h5>
-<h5> <%= post.review %> </h5>
-
-<%= post.user.email if post.user %>
-
-<h6> Posted: <%= time_ago_in_words(post.created_at) %> ago</h6>
-
+<%= link_to new_post_path, class: "btn btn-default btn-success" do %>
+    <i class="material-icons">favorite</i> New Post
 <% end %>
+<hr>
+<% @posts.each do |post| %>
+<div class="container">
+	<div class="row">
+		<div class="table-responsive">
+			<table width="100%" class="table">
+				<tbody>
+					<tr>
+						<td><%= link_to post.title, post %></td>
+						<td><%= time_ago_in_words(post.created_at) %> ago</td>
+						<td colspan="4" width="70%"><%= post.user.email if post.user %></td>
+					</tr>
+					<tr>
+						<td rowspan="3" colspan="2"><%= image_tag post.image.url(:small) %></td>
+						<th width="17.5%">Rating</th>
+						<td width="17.5%"><%= post.rating %></td>
+						<th width="17.5%">SAMPLE</th>
+						<td width="17.5%">SAMPLE</td>
+					</tr>
+					<tr>
+						<th width="17.5%">Price</th>
+						<td width="17.5%"><%= post.rating %></td>
+						<th width="17.5%">Location</th>
+						<td width="17.5%"><%= post.location %></td>
+					</tr>
+					<tr>
 
-<%= link_to "New Post", new_post_path %>
+						<td colspan="4"><%= post.review %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<% end %>
