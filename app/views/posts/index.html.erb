@@ -9,6 +9,8 @@
 <h5> <%= post.price %> </h5>
 <h5> <%= post.review %> </h5>
 
+<%= post.user.email if post.user %>
+
 <h6> Posted: <%= time_ago_in_words(post.created_at) %> ago</h6>
 
 <% end %>
