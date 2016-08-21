@@ -1,0 +1,19 @@
+<%= form_for @post do |f| %>
+	
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<br>
+	<%= f.label :rating %>
+	<%= f.text_field :rating %>
+	<br>
+	<%= f.label :price %>
+	<%= f.text_field :price %>
+	<br>
+	<%= f.label :location %>
+	<%= f.text_field :location %>
+	<br>
+	<%= f.label :review %>
+	<%= f.text_area :review %>
+	<br>
+	<%= f.submit %>
+<% end %>
