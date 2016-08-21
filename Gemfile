@@ -48,4 +48,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise', '~> 4.2'
-gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'paperclip', '~> 5.1'

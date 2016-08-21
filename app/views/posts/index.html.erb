@@ -2,7 +2,8 @@
 
 <% @posts.each do |post| %>
 
-<h1> <%= post.title %> </h1>
+<%= image_tag post.image.url(:small) %>
+<h1> <%= link_to post.title, post %> </h1>
 <h5> <%= post.rating %> </h5>
 <h5> <%= post.location %> </h5>
 <h5> <%= post.price %> </h5>
