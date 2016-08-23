@@ -1,16 +1,20 @@
-<%= post.user.user_name %>
-<%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
-<%= post.user.user_name %>
-<%= post.review %>
-<% if post.comments %>
-  <% post.comments.each do |comment| %>
-  <%= comment.user.user_name %>
-  <%= comment.comment %>
-    <% if comment.user == current_user %>
-      <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-    <% end %>
-  <% end %>
-<% end %>
-<%= form_for [post, post.comments.new] do |f| %>
-  <%= f.text_field :comment, placeholder: 'Add a comment...' %>
-<% end %>
+
+        <%= post.user.user_name %>
+
+      <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+   
+            <%= post.user.user_name %>
+         
+          <%= post.review %>
+        
+        <div class="comments" id="comments_<%= post.id %>">
+          <% if post.comments %>
+            <%= render post.comments, post: post %>
+          <% end %>
+        </div>
+     
+  
+        <%= form_for [post, post.comments.build], remote: true do |f| %>
+          <%= f.text_field :comment, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+        <% end %>
+   
