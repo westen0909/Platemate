@@ -8,7 +8,10 @@ class CommentsController < ApplicationController
 		@comment.save
 
 		if @comment.save
-			redirect_to post_path(@post)
+			respond_to do |format|  
+            	format.js { redirect_to post_path(@post) }
+        	end  
+			
 		else
 			render 'new'
 		end

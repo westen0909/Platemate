@@ -22,6 +22,7 @@
 
 	    <div class="collapse navbar-collapse" id="navigation-index">
 	    	<ul class="nav navbar-nav navbar-right">
+
 				<li>
 					<a href="components-documentation.html" target="_blank">
 						<i class="material-icons">dashboard</i> Components
@@ -46,7 +47,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<% if user_signed_in? %>  
-							<li class="dropdown-header"> <p class="text-primary">Signed in as <%= current_user.email %> Not you?</p></li>
+							<li class="dropdown-header"> <p class="text-primary">Signed in as: <strong><%= current_user.user_name %></strong></p></li>
 							<li><%= link_to "Sign-out", destroy_user_session_path, :method => :delete %></li>
 						<% else %>
 							<li><%= link_to "Sign-in", new_user_session_path %></li>
