@@ -3,7 +3,7 @@
 <%= link_to new_post_path, class: "btn btn-default btn-success" do %>
     <i class="material-icons">favorite</i> New Post
 <% end %>
-<hr>
+
 <% @posts.each do |post| %>
 <div class="container">
 	<div class="row">
@@ -11,12 +11,12 @@
 			<table width="100%" class="table">
 				<tbody>
 					<tr>
-						<td><%= link_to post.title, post %></td>
+						<td><%= post.title %></td>
 						<td><%= time_ago_in_words(post.created_at) %> ago</td>
-						<td colspan="4" width="70%"><%= post.user.email if post.user %></td>
+						<td colspan="4" width="70%"><%= post.user.user_name if post.user %></td>
 					</tr>
 					<tr>
-						<td rowspan="3" colspan="2"><%= image_tag post.image.url(:small) %></td>
+						<td rowspan="3" colspan="2"><%= link_to (image_tag post.image.url(:small), class: 'img-responsive'), post %></td>
 						<th width="17.5%">Rating</th>
 						<td width="17.5%"><%= post.rating %></td>
 						<th width="17.5%">SAMPLE</th>
