@@ -1,0 +1,27 @@
+<% @posts.each do |post| %>
+  
+        <%= post.user.user_name %>
+        <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+     
+        <%= post.user.user_name %>
+        
+        <%= post.review %>
+       <br>
+        <% if post.comments %>
+         <h1><%= post.comments.count %></h1>
+
+          <% post.comments.each do |comment| %>
+                <%= comment.user %>
+                <%= comment.comment %>
+                <% if comment.user == current_user %>
+                  <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                <% end %>
+          <% end %>
+        <% end %>
+     
+          <%= form_for [post, post.comments.new] do |f| %>
+            <%= f.text_field :comment, placeholder: 'Add a comment...' %>
+          <% end %>
+ <hr>
+<% end %>
+

@@ -1,29 +1,25 @@
 class CommentsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
+	before_action :set_post
 
 	def create
-		@post = Post.find(params[:post_id])
-		@comment = @post.comments.create(params[:comment].permit(:comment))
-		@comment.user_id = current_user.id if current_user
-		@comment.save
+		@comment = @post.comments.build(comment_params)
+		@comment.user_id = current_user.id
 
 		if @comment.save
-			respond_to do |format|  
-            	format.js { redirect_to post_path(@post) }
-        	end  
-			
+			flash[:success] = "You commented the hell out of that post!"
+			redirect_to :back
 		else
-			render 'new'
+			render root_path
 		end
 	end
 
 	def edit
-		@post = Post.find(params[:post_id])
 		@comment = @post.comments.find(params[:id])
 	end
 
 	def update
-		@post = Post.find(params[:post_id])
+
 		@comment = @post.comments.find(params[:id])
 
 		if @comment.update(params[:comment].permit(:comment))
@@ -34,11 +30,22 @@ class CommentsController < ApplicationController
 	end 
 
 	def destroy
-		@post = Post.find(params[:post_id])
+
 		@comment = @post.comments.find(params[:id])
 		@comment.destroy
-		redirect_to post_path(@post)
+		flash[:success] = "Comment deleted :("
+		redirect_to root_path
 	end
 	
+	private
+
+	def comment_params  
+		params.require(:comment).permit(:comment)
+	end
+
+	def set_post  
+		@post = Post.find(params[:post_id])
+	end  
+
 
 end
