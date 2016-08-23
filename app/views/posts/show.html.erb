@@ -1,4 +1,4 @@
-<div class="container">
+ <div class="container">
 	<div class="row">
 		<div class="table-responsive">
 			<table width="100%" class="table">
@@ -31,6 +31,11 @@
 	</div>
 </div>
 
+<h2> <%= @post.comments.count %></h2>
+<%= render @post.comments %>
+
+<h3> Reply to thread </h3>
+<%= render "comments/form" %>
 
 <%= link_to "Edit", edit_post_path(@post) %> |
 <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you?"} %> |
