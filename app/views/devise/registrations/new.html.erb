@@ -1,34 +1,77 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="card card-signup">
+                <div class="header header-success text-center">
+                  <h4>Log In</h4>
+                  <div class="social-line">
+                    <a href="#pablo" class="btn btn-simple btn-just-icon">
+                      <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a href="#pablo" class="btn btn-simple btn-just-icon">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#pablo" class="btn btn-simple btn-just-icon">
+                      <i class="fa fa-google-plus"></i>
+                    </a>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                <div class="content">
 
-  <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name, required: true %>
-  </div>
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">email</i>
+                    </span>
+                      <div class="form-group label-floating has-success">
+                        <%= f.email_field :email, autofocus: true, placeholder: 'E-mail', class: 'form-control'%>
+                      </div>
+                  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">face</i>
+                    </span>
+                      <div class="form-group label-floating has-success">
+                        <%= f.text_field :user_name, autofocus: true, placeholder: 'Username', class: 'form-control'%>
+                      </div>
+                  </div>
 
-<%= render "devise/shared/links" %>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                      <div class="form-group label-floating has-success">
+                        <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
+                      </div>
+                  </div>
+
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                      <div class="form-group label-floating has-success">
+                        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', class: 'form-control' %>
+                      </div>
+                  </div>
+                  
+         
+                <div class="footer text-center">
+                  <%= f.submit "Sign-Up", class: 'btn btn-success'%><br>
+                  <%= link_to "Log in", new_session_path(resource_name),class: 'btn btn-xs btn-info' %>
+                </div>
+
+                <% end %>
+         <!--        <%= render "devise/shared/links" %> -->
+                    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
