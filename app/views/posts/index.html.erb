@@ -1,3 +1,11 @@
+<%= link_to "New Post", new_post_path %>
+
+<br>
+
 <% @posts.each do |post| %>
   <%= render 'post', post: post %>
 <% end %>
+
+<%= paginate @posts %>
+<!-- 
+<%= link_to_next_page @posts, 'Next Page' %> -->
