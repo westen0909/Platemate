@@ -3,10 +3,22 @@
 
       <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
    
-            <%= post.user.user_name %>
-         
-          <%= post.review %>
+            <div class="page-header">
+              <div class="pull-left">
+              <strong><%= post.user.user_name %></strong>
+                      <%= post.review %>
+              </div>
+              <div class="pull-right">
+              <p class="text-right"><%= time_ago_in_words(post.created_at) %> ago</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+
+
+
         
+        <strong><%= post.comments.count %> Comments:</strong>
         <div class="comments" id="comments_<%= post.id %>">
           <% if post.comments %>
             <%= render post.comments, post: post %>
@@ -16,5 +28,6 @@
   
         <%= form_for [post, post.comments.build], remote: true do |f| %>
           <%= f.text_field :comment, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+          
         <% end %>
    
