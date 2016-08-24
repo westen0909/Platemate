@@ -6,7 +6,7 @@
     <%= comment.comment %>
   </div>
   <% if comment.user == current_user %>
-    <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
      
   <% end %>
 </div>
