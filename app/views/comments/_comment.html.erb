@@ -8,11 +8,12 @@
 	<div class="pull-right">
 		<p class="text-right">
 		<%= time_ago_in_words(comment.created_at) %> ago
-		<% if comment.user == current_user %>
+		<% if comment.user != current_user %>
 			<%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true do%>
 				<i class="material-icons">delete</i>
 			<% end %>
 		<% end %>
+
 		</p>
 	</div>
 	<div class="clearfix"></div>
