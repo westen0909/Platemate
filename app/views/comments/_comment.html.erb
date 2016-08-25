@@ -2,7 +2,7 @@
 
 <div class="page-header">
 	<div class="pull-left">
-		<strong><%= comment.user.user_name %></strong>
+		<strong><%= link_to comment.user.user_name, profile_path(comment.user.user_name) %></strong>
 		<%= comment.comment %>
 	</div>
 	<div class="pull-right">
@@ -20,3 +20,5 @@
 
 
 </div>
+
+
