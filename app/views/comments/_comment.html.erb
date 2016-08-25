@@ -2,7 +2,7 @@
 
 <div class="page-header">
 	<div class="pull-left">
-		<strong><%= link_to comment.user.user_name, profile_path(comment.user.user_name) %></strong>
+		<strong><%= comment.user.user_name %></strong>
 		<%= comment.comment %>
 	</div>
 	<div class="pull-right">
@@ -13,6 +13,7 @@
 				<i class="material-icons">delete</i>
 			<% end %>
 		<% end %>
+
 		</p>
 	</div>
 	<div class="clearfix"></div>
@@ -20,5 +21,3 @@
 
 
 </div>
-
-

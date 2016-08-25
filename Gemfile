@@ -49,4 +49,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
-gem 'kaminari', '~> 0.17.0'
