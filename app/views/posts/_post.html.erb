@@ -1,11 +1,13 @@
 
-        <%= post.user.user_name %>
+  <%= link_to post.user.user_name, profile_path(post.user.user_name) %>
 
-      <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+
+
+      <%= image_tag post.image.url(:medium), class:'img-responsive'%>
    
             <div class="page-header">
               <div class="pull-left">
-              <strong><%= post.user.user_name %></strong>
+              <strong><%= link_to post.user.user_name, profile_path(post.user.user_name) %></strong>
                       <%= post.review %>
               </div>
               <div class="pull-right">
