@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :set_post
 
+
 	def create
 		@comment = @post.comments.build(comment_params)
 		@comment.user_id = current_user.id

@@ -18,7 +18,7 @@
 
 
         
-        <strong><%= post.comments.count %> Comments:</strong>
+        <strong>Comments:</strong>
         <div class="comments" id="comments_<%= post.id %>">
           <% if post.comments %>
             <%= render post.comments, post: post %>
