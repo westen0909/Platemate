@@ -1,45 +1,88 @@
-<%= form_image_select(@post) %>
-<%= form_for @post, html: { multipart: true }  do |f| %>
+<div class='container'>
+	<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+	<h3 class="text-center">New Post </h3>
+	<hr>
 	
+<!-- 	<%= form_image_select(@post) %> -->
+
+	<%= form_for @post, html: { multipart: true }  do |f| %>
+
+	<% if @post.errors.any? %>
+		<div id="error_explanation">
+		  <h6>
+		    <strong><%= pluralize(@post.errors.count, "error") %> prohibited
+		    this post from being saved:</strong>
+		  </h6>
+		  <ul>
+		    <% @post.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		  </ul>
+		</div>
+	<% end %>
 		
-	<%= f.label :image %>
-	<%= f.file_field :image %>	
-	
-	<div class="row">
-		<div class="form-group label-floating has-success col-md-4 ">
-			<%= f.label :title, class: "control-label" %>
-			<%= f.text_field :title, class: "form-control" %>
-		</div>	
-	</div>
+		<div class="row">
 
-	<div class="row">
-		<div class="form-group label-floating has-success col-md-4 ">
-			<%= f.label :rating, class: "control-label" %>
-			<%= f.text_field :rating, class: "form-control" %>
-		</div>	
-	</div>
+			<div class="form-group label-floating has-success col-md-4">
+				<%= f.label :image %>
+				<%= f.file_field :image, class: 'form-control' %>
+			</div>
+		</div>
 
-	<div class="row">
-		<div class="form-group label-floating has-success col-md-4 ">
-			<%= f.label :price, class: "control-label" %>
-			<%= f.text_field :price, class: "form-control" %>
-		</div>	
-	</div>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="material-icons">title</i>
+			</span>
+			<div class="form-group label-floating has-success">
+				<%= f.text_field :title, autofocus: true, placeholder: 'Title', class: 'form-control'%>
+			</div>
+		</div>
 
-	<div class="row">
-		<div class="form-group label-floating has-success col-md-4 ">
-			<%= f.label :location, class: "control-label" %>
-			<%= f.text_field :location, class: "form-control" %>
-		</div>	
-	</div>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="material-icons">stars</i>
+			</span>
+			<div class="form-group label-floating has-success">
+				<%= f.text_field :rating, autofocus: true, placeholder: 'Title', class: 'form-control'%>
+			</div>
+		</div>
 
-	<div class="row">
-		<div class="form-group label-floating has-success col-md-4 ">
-			<%= f.label :review, class: "control-label" %>
-			<%= f.text_area :review, class: "form-control" %>
-		</div>	
-	</div>
 
-	<%= f.submit class: "btn btn-success" %>
-	<%= link_to "Cancel", root_path, class: "btn btn-success"%> 
-<% end %>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="material-icons">attach_money</i>
+			</span>
+			<div class="form-group label-floating has-success">
+				<%= f.text_field :price, autofocus: true, placeholder: 'Title', class: 'form-control'%>
+			</div>
+		</div>
+
+
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="material-icons">location_on</i>
+			</span>
+			<div class="form-group label-floating has-success">
+				<%= f.text_field :location, autofocus: true, placeholder: 'Title', class: 'form-control'%>
+			</div>
+		</div>
+
+
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="material-icons">rate_review</i>
+			</span>
+			<div class="form-group label-floating has-success">
+				<%= f.text_field :review, autofocus: true, placeholder: 'Title', class: 'form-control'%>
+			</div>
+		</div>
+
+
+		<%= f.submit class: "btn btn-success" %>
+		<%= link_to "Cancel", root_path, class: "btn btn-success"%> 
+		
+	<% end %>
+
+
+	</div>
+</div>

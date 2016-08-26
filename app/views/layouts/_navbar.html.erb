@@ -22,32 +22,27 @@
 
 	    <div class="collapse navbar-collapse" id="navigation-index">
 	    	<ul class="nav navbar-nav navbar-right">
-
 				<li>
-					<a href="components-documentation.html" target="_blank">
-						<i class="material-icons">dashboard</i> Components
-					</a>
+					<a href="/"><i class="material-icons">home</i> Home</a>
 				</li>
 				<li>
-					<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-						<i class="material-icons">unarchive</i> Upgrade to PRO
-					</a>
+					<%= link_to new_post_path do %>
+					<i class="material-icons">panorama_wide_angle</i>Post
+					<% end %>
 				</li>
 				<li>
-					<a rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-white btn-simple btn-just-icon">
-						<i class="fa fa-twitter"></i>
-					</a>
-				</li>
 				<li>
-					<a rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-white btn-simple btn-just-icon">
-						<i class="fa fa-facebook-square"></i>
-					</a>
-				</li>    		
+					<% if user_signed_in? %>  
+						<%= link_to profile_path(current_user.user_name) do %>
+						<i class="material-icons">account_circle</i>Profile
+						<% end %>
+					<% end %> 
+				</li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<% if user_signed_in? %>  
-							<li class="dropdown-header"> <p class="text-primary">Signed in as: <strong><%= current_user.user_name %></strong></p></li>
+							<li class="dropdown-header"> <p class="text-info">Signed in as: <strong><%= current_user.user_name %></strong></p></li>
 							<li><%= link_to "Sign-out", destroy_user_session_path, :method => :delete %></li>
 						<% else %>
 							<li><%= link_to "Sign-in", new_user_session_path %></li>
@@ -68,8 +63,8 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<div class="brand">
-						<h1>Material Kit.</h1>
-						<h3>A Badass Bootstrap UI Kit based on Material Design.</h3>
+						<h1>PlateMate!</h1>
+						<h3>Don't Dine Alone, Have a Platemate!</h3>
 					</div>
 				</div>
 			</div>
