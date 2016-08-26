@@ -1,5 +1,5 @@
 
- <div class="container">
+<div style="box-sizing: border-box; background: rgb(251, 251, 251) none repeat scroll 0% 0%; margin: 0px; border-radius: 20px;" class="container">
 
 
 <div class="col-md-8 col-md-offset-2 col-sm-6 col-sm-offset-3">
@@ -9,7 +9,7 @@
           <tr>
             <td><%= link_to post.user.user_name, profile_path(post.user.user_name) if post.user %></td>
             <td><%= time_ago_in_words(post.created_at) %> ago</td>
-            <td colspan="4" width="70%"><%= post.title %></td>
+            <th colspan="4" width="70%"><%= post.title %></th>
           </tr>
           <tr>
             <td rowspan="3" colspan="2"><%= image_tag post.image.url(:small), class:'img-responsive' %></td>
@@ -45,7 +45,8 @@
     </div>
   </div>
 </div>
-<div class = 'container' >
+<div style="box-sizing: border-box; background: rgb(251, 251, 251) none repeat scroll 0% 0%; margin: 0px; border-radius: 20px;" class="container">
+
   <div class="col-md-8 col-md-offset-2 col-sm-6 col-sm-offset-3">
 
         <strong>Comments:</strong>
